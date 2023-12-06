@@ -6,7 +6,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
@@ -15,6 +15,7 @@ model User {
   login    String
   password String
   role     String
+  todo     Todo[]
 }
 
 model Todo {
@@ -22,4 +23,6 @@ model Todo {
   name      String
   desc      String  @default("")
   completed Boolean @default(false)
+  userId    Int
+  user      User    @relation(fields: [userId], references: [id])
 }

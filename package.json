@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon src/index.js",
-    "drop": "node src/commands/DropDB.js",
-    "create-admin": "node src/commands/CreateAdmin.js",
+    "drop": "node src/commands/drop.js",
+    "create-admin": "node src/commands/create-admin.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

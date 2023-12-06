@@ -35,5 +35,5 @@ server.listen(5050, () => {
             console.log('user disconnected');
           });
       });
-    console.log('ws on *:5050');
+    console.log('WebSocket on port :5050' );
   });
