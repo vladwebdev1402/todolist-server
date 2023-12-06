@@ -1,0 +1,18 @@
+services:
+  http:
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - 3050:3050
+      - 5050:5050
+    links: 
+      - sqlite
+      
+  sqlite:
+    image: sqlite
+    volumes:
+      - ./prisma:/usr/src/app/prisma
+
+
+
+
