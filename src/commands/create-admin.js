@@ -7,11 +7,11 @@ const user = await prisma.user.findMany({
 
   if (user) console.log("Администратор уже существует: ", user);
   else {
-    const mefedron = bcrypt.genSaltSync(5);
-    const hashPassword = bcrypt.hashSync("adminka123", mefedron);
+    const salt = bcrypt.genSaltSync(5);
+    const hashPassword = bcrypt.hashSync("admin", salt);
     const newUser = await prisma.user.create({
         data: {
-          login: "adminka",
+          login: "admin",
           password: hashPassword,
           role: "ADMIN"
         },

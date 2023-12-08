@@ -30,8 +30,8 @@ class AuthController {
           .status(401)
           .json({ message: "Пользователь с таким логином уже существует" });
 
-      const mefedron = bcrypt.genSaltSync(5);
-      const hashPassword = bcrypt.hashSync(password, mefedron);
+      const salt = bcrypt.genSaltSync(5);
+      const hashPassword = bcrypt.hashSync(password, salt);
 
       await prisma.user.create({
         data: {
@@ -62,7 +62,6 @@ class AuthController {
 
         if (bcrypt.compareSync(password, user.password)) {
             const token = generateToken(user);
-            res.setHeader("Authorization", `Bearer ${token}`);
             return res.status(200).json({message:"Авторизация прошла успешно", token})
         }
         else return res.status(401).json({message:"Пароль введён неверно"});        
